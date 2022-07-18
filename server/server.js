@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname + '/public'));
 app.use('/uploads', express.static('uploads'));
+// app.use('/uploads', express.static('uploads'));
 app.use(require('./routes'));
 
 sequelize.sync({ force: false }).then(() => {

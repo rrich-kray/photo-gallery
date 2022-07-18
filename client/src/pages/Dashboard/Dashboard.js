@@ -6,14 +6,26 @@ import './Dashboard.css';
 const Dashboard = () => {
   const [images, setImages] = useState([]);
   const userId = jwt_decode(localStorage.getItem('token')).data[0];
+
   useEffect(() => {
+    const imageArr = [];
     axios
-      .get(`http://localhost:3001/photo-gallery/api/users/1`)
-      .then((imageData) => {
-        console.log(imageData);
+      .get(`http://localhost:3001/photo-gallery/api/users/${userId}`)
+      .then((userData) => {
+        userData.data.Posts.map((post) => imageArr.push(post.image.filename));
+        setImages(imageArr);
       });
   }, []);
-  return <div className="dashboard flex-row "></div>;
+
+  return (
+    <div className="dashboard flex-row ">
+      {images.map((image) => (
+        <div className="image-tile">
+          <img src={`http://localhost:3001/uploads/${image}`} />
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Dashboard;

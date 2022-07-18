@@ -14,13 +14,12 @@ const Login = () => {
 
   const handleFormSubmit = (e) => {
     axios
-      .post('http://localhost:3001/photo-gallery/api/users/register', {
-        first_name: formState.first_name,
-        last_name: formState.last_name,
+      .post('http://localhost:3001/photo-gallery/api/users/login', {
         email: formState.email,
         password: formState.password,
       })
       .then((userData) => {
+        console.log(userData);
         login(userData.data);
         window.location.replace('/dashboard');
       })
@@ -57,16 +56,16 @@ const Login = () => {
             <span>Password:</span>
             <input name="password" id="password" onChange={handleChange} />
           </div>
-          <div className="register-btns-container" style={{ zIndex: '999' }}>
-            <button
-              className="register-submit-btn form-btn"
-              onClick={() => handleFormSubmit()}
-            >
-              Register
-            </button>
-            <button className="form-btn">Login</button>
-          </div>
         </form>
+        <div className="register-btns-container" style={{ zIndex: '999' }}>
+          <button
+            className="register-submit-btn form-btn"
+            onClick={() => handleFormSubmit()}
+          >
+            Log in
+          </button>
+          {/* <button className="form-btn">Login</button> */}
+        </div>
       </div>
       <div className="register-right-panel"></div>
     </div>

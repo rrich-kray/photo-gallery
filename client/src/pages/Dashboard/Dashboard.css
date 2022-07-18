@@ -1,4 +1,13 @@
 .dashboard {
   height: 100%;
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 1fr);
+  /* grid-template-rows: repeat(auto-fit, 500px); */
+}
+
+.image-tile img {
+  max-height: 100%;
+  max-width: 100%;
+  /* object-fit: fill; */
 }

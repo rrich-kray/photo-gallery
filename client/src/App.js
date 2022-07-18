@@ -20,9 +20,21 @@ function App() {
     <div className="app flex-row justify-center align-center">
       <Router>
         <Routes>
-          <Route exact path="/" element={<Landing />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
+          <Route
+            exact
+            path="/"
+            element={!token ? <Landing /> : <Navigate to="dashboard" />}
+          />
+          <Route
+            exact
+            path="/login"
+            element={!token ? <Login /> : <Navigate to="/dashboard" />}
+          />
+          <Route
+            exact
+            path="/register"
+            element={!token ? <Register /> : <Navigate to="/dashboard" />}
+          />
           <Route
             exact
             path="/dashboard"

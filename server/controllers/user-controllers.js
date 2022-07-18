@@ -67,11 +67,13 @@ const userController = {
       },
     })
       .then((userData) => {
-        const token = jwt.sign({
-          data: [userData.email, userData.password],
+        const token = jwt.sign(
+          { data: [userData.id, userData.email] },
           secret,
-          expiresIn: '2h',
-        });
+          {
+            expiresIn: '2h',
+          }
+        );
         res.json({ user: userData, token: token });
       })
       .catch((err) => {
