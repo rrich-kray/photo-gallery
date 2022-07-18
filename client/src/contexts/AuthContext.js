@@ -1,0 +1,66 @@
+import React, { useReducer, createContext, useContext } from 'react';
+import decode from 'jwt-decode';
+
+const token = localStorage.getItem('token');
+
+const ACTIONS = {
+  LOGIN: 'login',
+  LOGOUT: 'logout',
+};
+
+const initialState = {
+  user: token ? { email: decode(token).email } : null,
+};
+
+const AuthContext = createContext({
+  user: null,
+  login: (userData) => {},
+  logout: () => {},
+});
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+export const authReducer = (state, { type, payload }) => {
+  switch (type) {
+    case ACTIONS.LOGIN:
+      return {
+        ...state,
+        user: payload,
+      };
+
+    case ACTIONS.LOGOUT:
+      return {
+        ...state,
+        user: payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const AuthProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(authReducer, initialState);
+
+  const login = (userData) => {
+    localStorage.setItem('token', userData.token);
+    dispatch({
+      type: ACTIONS.LOGIN,
+      payload: { email: decode(userData.token) },
+    });
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    dispatch({
+      type: ACTIONS.LOGOUT,
+    });
+  };
+
+  return (
+    <AuthContext.Provider value={{ user: state.user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
