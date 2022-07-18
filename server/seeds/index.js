@@ -5,6 +5,7 @@ const seedComments = require('./comment-seeds');
 const seedTags = require('./tag-seeds');
 const seedUpvotes = require('./upvote-seeds');
 const seedDownvotes = require('./downvote-seeds');
+const seedImages = require('./image-seeds');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
@@ -21,6 +22,8 @@ const seedAll = async () => {
   console.log(`----------UPVOTES SYNCED----------`);
   await seedDownvotes();
   console.log(`----------DOWNVOTES SYNCED----------`);
+  await seedImages();
+  console.log(`----------IMAGES SYNCED----------`);
   process.exit(0);
 };
 

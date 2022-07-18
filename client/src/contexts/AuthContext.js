@@ -1,5 +1,5 @@
 import React, { useReducer, createContext, useContext } from 'react';
-import decode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 const token = localStorage.getItem('token');
 
@@ -9,7 +9,9 @@ const ACTIONS = {
 };
 
 const initialState = {
-  user: token ? { email: decode(token).email } : null,
+  user: token
+    ? { id: jwt_decode(token).id, email: jwt_decode(token).email }
+    : null,
 };
 
 const AuthContext = createContext({
@@ -47,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem('token', userData.token);
     dispatch({
       type: ACTIONS.LOGIN,
-      payload: { email: decode(userData.token) },
+      payload: { id: userData.data.user.id, email: userData.data.user.email },
     });
   };
 

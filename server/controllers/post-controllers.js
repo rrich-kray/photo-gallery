@@ -10,6 +10,9 @@ const postController = {
         {
           model: Comment,
         },
+        {
+          model: Image,
+        },
       ],
     })
       .then((postData) => {
@@ -120,15 +123,23 @@ const postController = {
       { content: req.body.content },
       { where: { id: req.params.id } }
     )
-      .then()
-      .catch();
+      .then((postData) => {
+        res.json(postData);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
 
     Image.update(
       { filename: req.body.filename },
       { where: { post_id: req.params.id } }
     )
-      .then()
-      .catch();
+      .then((response) => {
+        res.json(response);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
   },
 };
 

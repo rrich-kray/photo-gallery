@@ -11,12 +11,16 @@
 .overlay {
   height: 100%;
   width: 100%;
-  background: rgb(0, 0, 0);
+  /* background: rgb(0, 0, 0); */
   background: linear-gradient(
     65deg,
-    rgb(32, 33, 43) 60%,
-    rgba(84, 84, 91, 0.75) 90%,
-    rgba(94, 108, 111, 0.5) 100%
+    rgb(32, 33, 43) 40%,
+    rgb(32, 33, 43, 0.95) 50%,
+    rgb(32, 33, 43, 0.9) 60%,
+    rgb(32, 33, 43, 0.85) 70%,
+    rgb(32, 33, 43, 0.8) 80%,
+    rgb(32, 33, 43, 0.75) 90%,
+    rgb(32, 33, 43, 0.7) 100%
   );
   position: absolute;
   z-index: 2;
@@ -60,6 +64,7 @@
 .register-text-container :nth-child(1) {
   color: rgba(166, 158, 158, 0.5);
   font-weight: bold;
+  animation: fade-in-from-bottom 0.25s linear;
 }
 
 .register-text-container :nth-child(2) {
@@ -68,12 +73,14 @@
   margin-bottom: 10px;
   font-size: 3.5rem;
   color: white;
+  animation: fade-in-from-bottom 0.25s linear;
 }
 
 .register-text-container :nth-child(3) {
   /* color: white; */
   font-weight: bold;
   color: rgba(166, 158, 158, 0.5);
+  animation: fade-in-from-bottom 0.25s linear;
 }
 
 .register-container {
@@ -113,13 +120,14 @@
 }
 
 .input-container span {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   position: relative;
   color: rgba(166, 158, 158, 0.5);
   font-weight: bold;
   position: relative;
   left: 10px;
-  top: 1.5px;
+  top: 5px;
+  margin-bottom: 10px;
 
   /* padding-top: 5px; */
 }
@@ -130,6 +138,8 @@
   outline: none;
   color: white;
   font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .input-container:focus-within {

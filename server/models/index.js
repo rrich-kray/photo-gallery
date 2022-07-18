@@ -78,4 +78,13 @@ Tag.belongsTo(Post, {
   foreignKey: 'post_id',
 });
 
-module.exports = { User, Comment, Upvote, Downvote, Post, Tag };
+Post.hasOne(Image, {
+  foreignKey: 'post_id',
+  onDelete: 'CASCADE',
+});
+
+Image.belongsTo(Post, {
+  foreignKey: 'post_id',
+});
+
+module.exports = { User, Comment, Upvote, Downvote, Post, Tag, Image };

@@ -8,4 +8,10 @@ export const handleFormSubmit = async (e, url, type, body) => {
   if (type.toLowerCase() === 'post') {
     return await axios.post(url, { ...body });
   }
+  if (type.toLowerCase() === 'put') {
+    return await axios.put(url, { ...body });
+  }
+  if (type.toLowerCase() === 'delete') {
+    return await axios.delete(url);
+  }
 };

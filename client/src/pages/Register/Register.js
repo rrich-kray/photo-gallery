@@ -6,20 +6,37 @@ import './Register.css';
 
 const Register = () => {
   const [formState, setFormState] = useState({
-    firtName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
   });
 
-  const { register } = useAuth();
+  const { login } = useAuth();
+
+  const handleFormSubmit = (e) => {
+    axios
+      .post('http://localhost:3001/photo-gallery/api/users/register', {
+        first_name: formState.first_name,
+        last_name: formState.last_name,
+        email: formState.email,
+        password: formState.password,
+      })
+      .then((userData) => {
+        login(userData.data);
+        window.location.replace('/dashboard');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    return {
+    return setFormState({
       ...formState,
       [name]: value,
-    };
+    });
   };
 
   return (
@@ -30,30 +47,39 @@ const Register = () => {
           <span>Start for free</span>
           <h1>Create a new account</h1>
           <span>
-            Already a member? <Link to="login">Log in</Link>
+            Already a member? <Link to="/login">Log in</Link>
           </span>
         </div>
         <form className="register-form form">
           <div className="register-names-container flex-row justify-center align-center">
             <div className="register-first-name input-container">
               <span>First Name:</span>
-              <input name="firstName" id="firstName" onChange={handleChange} />
+              <input
+                name="first_name"
+                id="first_name"
+                onChange={handleChange}
+              />
             </div>
             <div className="register-last-name input-container">
               <span>Last Name:</span>
-              <input name="lastName" id="lastName" onChange={handleChange} />
+              <input name="last_name" id="last_name" onChange={handleChange} />
             </div>
           </div>
           <div className="register-email-container input-container">
             <span>Email:</span>
-            <input name="lastName" id="lastName" onChange={handleChange} />
+            <input name="email" id="email" onChange={handleChange} />
           </div>
           <div className="register-password-container input-container">
             <span>Password:</span>
-            <input name="passsword" id="password" onChange={handleChange} />
+            <input name="password" id="password" onChange={handleChange} />
           </div>
-          <div className="register-btns-container">
-            <button className="register-submit-btn form-btn">Register</button>
+          <div className="register-btns-container" style={{ zIndex: '999' }}>
+            <button
+              className="register-submit-btn form-btn"
+              onClick={() => handleFormSubmit()}
+            >
+              Register
+            </button>
             <button className="form-btn">Login</button>
           </div>
         </form>

@@ -12,7 +12,7 @@ const userController = {
   getUserById(req, res) {
     User.findOne({
       where: {
-        id: req.params.id,
+        id: req.params.userId,
       },
 
       include: [
@@ -21,6 +21,9 @@ const userController = {
           include: [
             {
               model: Comment,
+            },
+            {
+              model: Image,
             },
           ],
         },
@@ -36,13 +39,21 @@ const userController = {
 
   // Register
   register(req, res) {
-    User.create(req.body)
+    User.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      password: req.body.password,
+    })
       .then((userData) => {
-        const token = jwt.sign({
-          data: [userData.email, userData.password],
+        console.log(userData);
+        const token = jwt.sign(
+          {
+            data: [userData.id, userData.email],
+          },
           secret,
-          expiresIn: '2h',
-        });
+          { expiresIn: '2h' }
+        );
         res.json({ user: userData, token: token });
       })
       .catch((err) => res.json(err));
