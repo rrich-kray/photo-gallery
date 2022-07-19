@@ -1,10 +1,25 @@
 .nav {
-  height: 100px;
+  height: 75px;
   width: 100%;
   position: absolute;
   top: 0;
 }
 
+.nav-center-container {
+  width: 300px;
+}
+
+.link-container :nth-child(1) {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  transition: 0.25s;
+}
+
+.link-container :nth-child(1):hover {
+  color: gold;
+}
+
 .nav-container {
-  flex: 1;
+  /* flex: 1; */
 }

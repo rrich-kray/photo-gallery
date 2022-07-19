@@ -1,13 +1,25 @@
 .dashboard {
-  height: 100%;
+  /* height: calc(100% - 150px); */
+  height: calc(100% - 150px);
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 1fr);
-  /* grid-template-rows: repeat(auto-fit, 500px); */
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-.image-tile img {
-  max-height: 100%;
-  max-width: 100%;
-  /* object-fit: fill; */
+.dashboard-nav {
+  height: 75px;
+  width: 100%;
+}
+
+.dashboard-nav-center-container {
+  width: 500px;
+  height: 100%;
+}
+
+.photo-container {
+  height: calc(100% - 75px);
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 500px);
+  grid-template-rows: repeat(auto-fit, 500px);
 }

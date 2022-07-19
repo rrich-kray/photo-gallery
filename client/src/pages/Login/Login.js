@@ -12,6 +12,9 @@ const Login = () => {
 
   const { login } = useAuth();
 
+  // isssue may be that the default form refresh is occurring before the attached callbacks
+  // Callbacks added with .then() will never be invoked before the completion of the current run of the JavaScript event loop.
+  // Maybe the page refresh is occuring in the event loop
   const handleFormSubmit = (e) => {
     axios
       .post('http://localhost:3001/photo-gallery/api/users/login', {
@@ -21,10 +24,6 @@ const Login = () => {
       .then((userData) => {
         console.log(userData);
         login(userData.data);
-        window.location.replace('/dashboard');
-      })
-      .catch((err) => {
-        console.log(err);
       });
   };
 

@@ -61,6 +61,186 @@ const imageData = [
     filename: '15.jpg',
     post_id: 15,
   },
+  {
+    filename: '16.jpg',
+    post_id: 16,
+  },
+  {
+    filename: '17.jpg',
+    post_id: 17,
+  },
+  {
+    filename: '18.jpg',
+    post_id: 18,
+  },
+  {
+    filename: '19.jpg',
+    post_id: 19,
+  },
+  {
+    filename: '20.jpg',
+    post_id: 20,
+  },
+  {
+    filename: '21.jpg',
+    post_id: 21,
+  },
+  {
+    filename: '22.jpg',
+    post_id: 22,
+  },
+  {
+    filename: '23.jpg',
+    post_id: 23,
+  },
+  {
+    filename: '24.jpg',
+    post_id: 24,
+  },
+  {
+    filename: '25.jpg',
+    post_id: 25,
+  },
+  {
+    filename: '26.jpg',
+    post_id: 26,
+  },
+  {
+    filename: '27.jpg',
+    post_id: 27,
+  },
+  {
+    filename: '28.jpg',
+    post_id: 28,
+  },
+  {
+    filename: '29.jpg',
+    post_id: 29,
+  },
+  {
+    filename: '30.jpg',
+    post_id: 30,
+  },
+  {
+    filename: '31.jpg',
+    post_id: 31,
+  },
+  {
+    filename: '32.jpg',
+    post_id: 32,
+  },
+  {
+    filename: '33.jpg',
+    post_id: 33,
+  },
+  {
+    filename: '34.jpg',
+    post_id: 34,
+  },
+  {
+    filename: '35.jpg',
+    post_id: 35,
+  },
+  {
+    filename: '36.jpg',
+    post_id: 36,
+  },
+  {
+    filename: '37.jpg',
+    post_id: 37,
+  },
+  {
+    filename: '38.jpg',
+    post_id: 38,
+  },
+  {
+    filename: '39.jpg',
+    post_id: 39,
+  },
+  {
+    filename: '40.jpg',
+    post_id: 40,
+  },
+  {
+    filename: '41.jpg',
+    post_id: 41,
+  },
+  {
+    filename: '42.jpg',
+    post_id: 42,
+  },
+  {
+    filename: '43.jpg',
+    post_id: 43,
+  },
+  {
+    filename: '44.jpg',
+    post_id: 44,
+  },
+  {
+    filename: '45.jpg',
+    post_id: 45,
+  },
+  {
+    filename: '46.jpg',
+    post_id: 46,
+  },
+  {
+    filename: '47.jpg',
+    post_id: 47,
+  },
+  {
+    filename: '48.jpg',
+    post_id: 48,
+  },
+  {
+    filename: '49.jpg',
+    post_id: 49,
+  },
+  {
+    filename: '50.jpg',
+    post_id: 50,
+  },
+  {
+    filename: '51.jpg',
+    post_id: 51,
+  },
+  {
+    filename: '52.jpg',
+    post_id: 52,
+  },
+  {
+    filename: '53.jpg',
+    post_id: 53,
+  },
+  {
+    filename: '54.jpg',
+    post_id: 54,
+  },
+  {
+    filename: '55.jpg',
+    post_id: 55,
+  },
+  {
+    filename: '56.jpg',
+    post_id: 56,
+  },
+  {
+    filename: '57.jpg',
+    post_id: 57,
+  },
+  {
+    filename: '58.jpg',
+    post_id: 58,
+  },
+  {
+    filename: '59.jpg',
+    post_id: 59,
+  },
+  {
+    filename: '60.jpg',
+    post_id: 60,
+  },
 ];
 
 const seedImages = () => Image.bulkCreate(imageData);
