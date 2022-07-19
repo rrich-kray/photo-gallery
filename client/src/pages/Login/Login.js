@@ -12,10 +12,12 @@ const Login = () => {
 
   const { login } = useAuth();
 
-  // isssue may be that the default form refresh is occurring before the attached callbacks
+  // What am I not understanding? What assumptions am I making?
+  // issue may be that the default form refresh is occurring before the attached callbacks
   // Callbacks added with .then() will never be invoked before the completion of the current run of the JavaScript event loop.
   // Maybe the page refresh is occuring in the event loop
   const handleFormSubmit = (e) => {
+    e.preventDefault();
     axios
       .post('http://localhost:3001/photo-gallery/api/users/login', {
         email: formState.email,
@@ -46,7 +48,7 @@ const Login = () => {
             Not a member yet? <Link to="/register">Register</Link>
           </span>
         </div>
-        <form className="register-form form">
+        <form className="register-form form" onSubmit={handleFormSubmit}>
           <div className="register-email-container input-container">
             <span>Email:</span>
             <input name="email" id="email" onChange={handleChange} />
@@ -55,16 +57,16 @@ const Login = () => {
             <span>Password:</span>
             <input name="password" id="password" onChange={handleChange} />
           </div>
+          <div className="register-btns-container" style={{ zIndex: '999' }}>
+            <button
+              className="register-submit-btn form-btn"
+              onClick={handleFormSubmit}
+            >
+              Log in
+            </button>
+            {/* <button className="form-btn">Login</button> */}
+          </div>
         </form>
-        <div className="register-btns-container" style={{ zIndex: '999' }}>
-          <button
-            className="register-submit-btn form-btn"
-            onClick={() => handleFormSubmit()}
-          >
-            Log in
-          </button>
-          {/* <button className="form-btn">Login</button> */}
-        </div>
       </div>
       <div className="register-right-panel"></div>
     </div>

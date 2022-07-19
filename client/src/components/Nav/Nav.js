@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 import './Nav.css';
 
-const Nav = ({ links }) => {
+const Nav = ({ links, toggleModal }) => {
+  const { logout } = useAuth();
   return (
     <div className="nav flex-row justify-between align-center">
-      <div className="nav-container-left nav-container">
-        <img src="https://www.svgrepo.com/show/82627/xing-logo.svg" />
-      </div>
-      <div className="nav-center-container nav-container flex-row justify-between align-center">
-        {links.map((link) => (
-          <div className="link-container">
-            <Link to={link}>
+      {links.map((link) => (
+        <div className="link-container">
+          {link === '/logout' ? (
+            <button onClick={() => logout()}>Logout</button>
+          ) : (
+            <Link to={link} style={{ fontSize: '1rem' }}>
               {link[1].toUpperCase() + link.split('').slice(2).join('')}
             </Link>
-          </div>
-        ))}
-      </div>
-      <div className="nav-container-right nav-container">
-        {/* Profile pic goes here */}
+          )}
+        </div>
+      ))}
+      <div className="link-container">
+        <button onClick={() => toggleModal()}>Create a Post</button>
       </div>
     </div>
   );

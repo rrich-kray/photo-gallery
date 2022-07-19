@@ -47,6 +47,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = (userData) => {
     localStorage.setItem('token', userData.token);
+    window.location.replace('/dashboard');
     dispatch({
       type: ACTIONS.LOGIN,
       payload: { id: userData.data.user.id, email: userData.data.user.email },
@@ -55,6 +56,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('token');
+    // window.location.replace('/register');
     dispatch({
       type: ACTIONS.LOGOUT,
     });

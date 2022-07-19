@@ -50,7 +50,7 @@ const Register = () => {
             Already a member? <Link to="/login">Log in</Link>
           </span>
         </div>
-        <form className="register-form form">
+        <form className="register-form form" onSubmit={handleFormSubmit}>
           <div className="register-names-container flex-row justify-center align-center">
             <div className="register-first-name input-container">
               <span>First Name:</span>
@@ -76,7 +76,7 @@ const Register = () => {
           <div className="register-btns-container" style={{ zIndex: '999' }}>
             <button
               className="register-submit-btn form-btn"
-              onClick={() => handleFormSubmit()}
+              onClick={handleFormSubmit}
             >
               Register
             </button>
