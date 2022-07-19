@@ -10,7 +10,7 @@ const path = require('path');
 app.use(fileUpload({ createParentPath: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: ['http://localhost:3000'], credentials: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));

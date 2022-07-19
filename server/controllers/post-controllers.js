@@ -1,5 +1,7 @@
 const { Post, Image, Comment } = require('../models');
 const { Op } = require('sequelize');
+const uniqid = require('uniqid');
+const path = require('path');
 // response is going through to the server but the server is returning an empty dataset
 
 const postController = {
@@ -44,6 +46,17 @@ const postController = {
           res.json('No posts found with this ID!');
           return;
         }
+        res.json(postData);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  },
+
+  //Create post
+  createPost(req, res) {
+    Post.create(req.body)
+      .then((postData) => {
         res.json(postData);
       })
       .catch((err) => {
@@ -140,6 +153,29 @@ const postController = {
       .catch((err) => {
         res.json(err);
       });
+  },
+
+  // Upload files
+  // Check if image files are attached. If not, send message in response object
+  // Otherwise, assign file to variable, and generate a unique file name with uniqid
+  // Move file to uploads folder using .mv()
+  // Create entry in Image model with unique filename and user id.
+  uploadFile(req, res) {
+    if (!req.files) {
+      res.send({
+        status: 'failed',
+        message: 'No file uploaded',
+      });
+      return;
+    }
+    const file = req.files.file;
+    const originalFilenameArr = file.name.split('.');
+    const extension = originalFilenameArr[originalFilenameArr.length - 1];
+    const filename = uniqid();
+    const filenameExt = filename + '.' + extension;
+    // if it's located on body object it's likely the .mv() method is not available on the object
+    file.mv(path.join(__dirname, '../uploads', filenameExt));
+    res.send(filenameExt);
   },
 };
 
