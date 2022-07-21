@@ -28,7 +28,9 @@ function App() {
           <Route
             exact
             path="/"
-            element={!token ? <Landing /> : <Navigate to="dashboard" />}
+            element={
+              !token ? <Navigate to="login" /> : <Navigate to="dashboard" />
+            }
           />
           <Route
             exact
