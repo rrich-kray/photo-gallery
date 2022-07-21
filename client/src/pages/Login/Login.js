@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import axios from 'axios';
 import './Login.css';
 
-const Login = () => {
+const Login = ({ baseUrl }) => {
   const [formState, setFormState] = useState({
     email: '',
     password: '',
@@ -19,7 +19,7 @@ const Login = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:3001/photo-gallery/api/users/login', {
+      .post(`${baseUrl}/photo-gallery/api/users/login`, {
         email: formState.email,
         password: formState.password,
       })

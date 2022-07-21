@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import axios from 'axios';
 import './Register.css';
 
-const Register = () => {
+const Register = ({ baseUrl }) => {
   const [formState, setFormState] = useState({
     first_name: '',
     last_name: '',
@@ -16,7 +16,7 @@ const Register = () => {
 
   const handleFormSubmit = (e) => {
     axios
-      .post('http://localhost:3001/photo-gallery/api/users/register', {
+      .post(`${baseUrl}/photo-gallery/api/users/register`, {
         first_name: formState.first_name,
         last_name: formState.last_name,
         email: formState.email,

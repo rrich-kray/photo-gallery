@@ -14,6 +14,10 @@ import {
 } from 'react-router-dom';
 
 function App() {
+  const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? 'https://photo-gallery-rrich-kray.herokuapp.com'
+      : 'http://localhost:3001';
   const { user } = useAuth();
   console.log(user);
   const token = localStorage.getItem('token');
@@ -29,17 +33,31 @@ function App() {
           <Route
             exact
             path="/login"
-            element={!token ? <Login /> : <Navigate to="/dashboard" />}
+            element={
+              !token ? (
+                <Login baseUrl={baseUrl} />
+              ) : (
+                <Navigate to="/dashboard" />
+              )
+            }
           />
           <Route
             exact
             path="/register"
-            element={!token ? <Register /> : <Navigate to="/dashboard" />}
+            element={
+              !token ? (
+                <Register baseUrl={baseUrl} />
+              ) : (
+                <Navigate to="/dashboard" />
+              )
+            }
           />
           <Route
             exact
             path="/dashboard"
-            element={token ? <Dashboard /> : <Navigate to="/login" />}
+            element={
+              token ? <Dashboard baseUrl={baseUrl} /> : <Navigate to="/login" />
+            }
           />
         </Routes>
       </Router>

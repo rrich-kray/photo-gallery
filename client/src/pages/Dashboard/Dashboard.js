@@ -7,7 +7,7 @@ import Modal from '../../components/Modal/Modal';
 import jwt_decode from 'jwt-decode';
 import './Dashboard.css';
 
-const Dashboard = () => {
+const Dashboard = ({ baseUrl }) => {
   const [isNavVisible, changeNavVisibility] = useState(false);
   const [isModalVisible, changeModalVisibility] = useState(false);
   const [activePost, setActivePost] = useState();
@@ -34,7 +34,7 @@ const Dashboard = () => {
   useEffect(() => {
     const postsArr = [];
     axios
-      .get(`http://localhost:3001/photo-gallery/api/users/${userId}`)
+      .get(`${baseUrl}/photo-gallery/api/users/${userId}`)
       .then((userData) => {
         userData.data.Posts.map((post) => postsArr.push(post));
         setPosts(postsArr);
