@@ -1,13 +1,13 @@
 {
-    "development": {
-        "username": "root",
-        "password": "password",
-        "database": "kanban_board_db",
-        "host": "localhost",
-        "dialect": "mysql"
-    },
-    "production": {
-        "use_env_variable": "JAWSDB_URL",
-        "dialect": "mysql"
-    }
+  "development": {
+    "username": "root",
+    "password": "phebePhilange93!",
+    "database": "photo_gallery_db",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
+  }
 }
